@@ -22,7 +22,7 @@ class Login extends Component {
     const loginCall = this.props.logIn(data);
     loginCall.then((data) => {
       if(data.status.message === "Success"){
-          this.props.history.push('/profile')
+          this.props.history.push(`/profile/${data.id}`)
         } else {
           console.log(data) // Not Sure How To Display Individual FORM Errors
         }
