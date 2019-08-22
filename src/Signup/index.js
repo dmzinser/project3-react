@@ -33,7 +33,7 @@ class Signup extends Component {
 
     signUpCall.then((data) => {
       if(data.status.message === "Success"){
-        this.props.history.push(`/profile/${data.id}`)
+        this.props.history.push(`/user/${data.data.id}`)
       } else {
         console.log(data) // Not Sure How To Display Individual FORM Errors
       }

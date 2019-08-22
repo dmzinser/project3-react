@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Switch } from "react-router-dom";
 import Login from "./Login";
 import Signup from "./Signup";
+import UserShow from "./UserShow";
 
 const My404 = () => {
   return (
@@ -68,6 +69,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/login" render={(props) => <Login {...props} logIn={this.logIn} />} />
           <Route exact path="/signup" render={(props) => <Signup {...props} signUp={this.signUp} /> } />
+          <Route exact path="/user/:id" render={(props) => <UserShow {...props}/> } />
           <Route component={My404} />
         </Switch>
       </main>
