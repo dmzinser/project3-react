@@ -10,6 +10,8 @@ import ShowAllPhotos from "./ShowAllPhotos";
 import MenuNav from "./MenuNav";
 import { formatDiagnosticsWithColorAndContext } from "typescript";
 
+console.log(process.env)
+
 const My404 = () => {
   return (
     <div>
@@ -47,7 +49,7 @@ class App extends Component {
       })
       return parsedResponse
     } catch (err) {
-      console.log(err)
+      return(err)
     }
   };
 
@@ -69,7 +71,7 @@ class App extends Component {
       })
       return parsedResponse
     } catch (err) {
-      console.log(err)
+      return(err)
     }
   };
 
