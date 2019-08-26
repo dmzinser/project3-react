@@ -68,7 +68,7 @@ class UserShow extends Component {
     data.append("latitude", this.state.latitude)
     data.append("longitude", this.state.longitude)
     data.append("file_location", this.state.file);
-    const photoUpload = await fetch(`http://localhost:8000/user/${this.props.match.params.id}/photos`, {
+    const photoUpload = await fetch("http://localhost:8000/photos/addphoto", {
       method: "POST",
       credentials: "include",
       body: data,
@@ -104,7 +104,7 @@ class UserShow extends Component {
       return(err)
     }
   };
-  
+
   render () {
     const { images } = this.state
     return (
@@ -115,7 +115,10 @@ class UserShow extends Component {
               return (
                 <Grid.Column >
                   <div>
-                    <img src={`http://localhost:8000/photo_uploads/${photo.file_location}`} />
+                    <Link to={`/photos/${photo.id}`}>
+                      <img src={`http://localhost:8000/photo_uploads/${photo.file_location}`} />
+                    </Link>
+                    
                     <Button>
                       <Link to={`/photos/${photo.id}`}>Edit Photo</Link>
                     </Button>
