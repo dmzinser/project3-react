@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, Grid, Header, Image, Message, Segment } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 class UserShow extends Component {
   state = {
@@ -11,6 +12,7 @@ class UserShow extends Component {
     file: "",
     images: []
   };
+
   async componentDidMount(){
     const user = await fetch(`http://localhost:8000/user/${this.props.match.params.id}`)
     const parsedUser = await user.json()
@@ -18,11 +20,13 @@ class UserShow extends Component {
     const photos = await fetch(`http://localhost:8000/user/${this.props.match.params.id}/photos`)
     const parsedPhotos = await photos.json()
     console.log(parsedUser)
+    console.log(this.props.currentUser)
     this.setState({
       user: parsedUser.data,
       images: parsedPhotos.data
     })
   };
+
   handleChange = (e) => {
     if(e.target.name !== "file") {
       this.setState({
@@ -34,6 +38,27 @@ class UserShow extends Component {
       });
     }
   };
+
+  deleteUser = async (id) => {
+    try {
+      const deleteUserRequest = await fetch(`http://localhost:8000/user/${this.props.match.params.id}`, {
+        method: "DELETE",
+        credentials: "include",
+        body: JSON.stringify(this.state.user),
+        headers:  {
+          "Content-Type": "application/json"
+        }
+      })
+      const deleteUserResponse = await deleteUserRequest.json()
+      this.setState({
+        user: {deleteUserResponse}
+      })
+      this.props.history.push("/signup")
+    } catch (err) {
+      return(err)
+    }
+  };
+
   handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -52,13 +77,57 @@ class UserShow extends Component {
       }
     });
     const parsedResponse = await photoUpload.json()
+    if(parsedResponse.status.message === "Success"){
+      this.setState({
+        images: [...this.state.images, parsedResponse.data]
+      })
+    }
     console.log(parsedResponse)
-    
   };
+
+  deletePhoto = async (id) => {
+    try {
+      const deleteRequest = await fetch(`http://localhost:8000/photos/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+        body: JSON.stringify(this.state.file),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      const deleteResponse = await deleteRequest.json()
+      this.setState({
+        file: {deleteResponse},
+        images: [...this.state.images].filter( p => p.id !== id)
+      })
+    } catch (err) {
+      return(err)
+    }
+  };
+  
   render () {
-    console.log(this.state)
+    const { images } = this.state
     return (
-      // IF THE USER HAS PHOTOS ALREADY UPLOADED, SHOW THEM HERE
+      <div>
+        <Grid columns={4} >
+          <Grid.Row>
+            {images.map(photo => {
+              return (
+                <Grid.Column >
+                  <div>
+                    <img src={`http://localhost:8000/photo_uploads/${photo.file_location}`} />
+                    <Button>
+                      <Link to={`/photos/${photo.id}`}>Edit Photo</Link>
+                    </Button>
+                    <Button onClick={() => this.deletePhoto(photo.id)} type="submit">
+                      Delete Photo
+                    </Button>
+                  </div>
+                </Grid.Column>
+              )
+            })}
+          </Grid.Row>
+        </Grid>
       <Form onSubmit={this.handleSubmit}>
         <Form.Input placeholder="Photo Title" type="text" name="title" onChange={this.handleChange}/>
         <Form.Input placeholder="Photo Description" type="text" name="description" onChange={this.handleChange}/>
@@ -69,8 +138,17 @@ class UserShow extends Component {
           Add A Photo!
         </Button>
       </Form>
+      <Link to={`/user/${this.props.match.params.id}/edit`}>
+      <Button fluid size="large" type="submit">
+          Edit User!
+      </Button>
+      </Link>
+      <Button onClick={this.deleteUser} fluid size="large" type="submit">
+          Delete User!
+      </Button>
+      </div>
     )
   }
 }
 
-export default UserShow
+export default UserShow;

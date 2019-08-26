@@ -35,7 +35,7 @@ class Signup extends Component {
       if(data.status.message === "Success"){
         this.props.history.push(`/user/${data.data.id}`)
       } else {
-        console.log(data) // Not Sure How To Display Individual FORM Errors
+        console.log(data)
       }
     })
   };
@@ -61,4 +61,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup
+export default Signup;

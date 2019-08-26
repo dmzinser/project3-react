@@ -7,11 +7,13 @@ class Login extends Component {
     username: "",
     password: ""
   };
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
   };
+
   handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -24,10 +26,11 @@ class Login extends Component {
       if(data.status.message === "Success"){
           this.props.history.push(`/user/${data.data.id}`)
         } else {
-          console.log(data) // Not Sure How To Display Individual FORM Errors
+          console.log(data)
         }
     })
   };
+  
   render() {
     return(
       <Form onSubmit={this.handleSubmit}>
