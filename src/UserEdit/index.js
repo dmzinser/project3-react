@@ -9,9 +9,9 @@ class UserEdit extends Component {
     password: "",
     image: {}
   };
-  
+
   async componentDidMount(){
-    const user = await fetch(`http://localhost:8000/user/${this.props.match.params.id}`)
+    const user = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/${this.props.match.params.id}`)
     const parsedUser = await user.json()
     console.log(parsedUser)
     this.setState({
@@ -35,7 +35,7 @@ class UserEdit extends Component {
 
   editUser = async (data) => {
     try {
-      const editUserRequest = await fetch(`http://localhost:8000/user/${this.props.match.params.id}/edit`, {
+      const editUserRequest = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/${this.props.match.params.id}/edit`, {
         method: "PUT",
         credentials: "include",
         body: JSON.stringify(data),

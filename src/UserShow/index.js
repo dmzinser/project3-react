@@ -14,10 +14,10 @@ class UserShow extends Component {
   };
 
   async componentDidMount(){
-    const user = await fetch(`http://localhost:8000/user/${this.props.match.params.id}`)
+    const user = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/${this.props.match.params.id}`)
     const parsedUser = await user.json()
     delete parsedUser.data.password
-    const photos = await fetch(`http://localhost:8000/user/${this.props.match.params.id}/photos`)
+    const photos = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/${this.props.match.params.id}/photos`)
     const parsedPhotos = await photos.json()
     console.log(parsedUser)
     console.log(this.props.currentUser)
@@ -41,7 +41,7 @@ class UserShow extends Component {
 
   deleteUser = async (id) => {
     try {
-      const deleteUserRequest = await fetch(`http://localhost:8000/user/${this.props.match.params.id}`, {
+      const deleteUserRequest = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/${this.props.match.params.id}`, {
         method: "DELETE",
         credentials: "include",
         body: JSON.stringify(this.state.user),
@@ -68,7 +68,7 @@ class UserShow extends Component {
     data.append("latitude", this.state.latitude)
     data.append("longitude", this.state.longitude)
     data.append("file_location", this.state.file);
-    const photoUpload = await fetch("http://localhost:8000/photos/addphoto", {
+    const photoUpload = await fetch(`${process.env.REACT_APP_BACKEND_URL}/photos/addphoto`, {
       method: "POST",
       credentials: "include",
       body: data,
@@ -87,7 +87,7 @@ class UserShow extends Component {
 
   deletePhoto = async (id) => {
     try {
-      const deleteRequest = await fetch(`http://localhost:8000/photos/${id}`, {
+      const deleteRequest = await fetch(`${process.env.REACT_APP_BACKEND_URL}/photos/${id}`, {
         method: "DELETE",
         credentials: "include",
         body: JSON.stringify(this.state.file),
@@ -116,7 +116,7 @@ class UserShow extends Component {
                 <Grid.Column >
                   <div>
                     <Link to={`/photos/${photo.id}`}>
-                      <img src={`http://localhost:8000/photo_uploads/${photo.file_location}`} />
+                      <img src={`${process.env.REACT_APP_BACKEND_URL}/photo_uploads/${photo.file_location}`} />
                     </Link>
                     
                     <Button>

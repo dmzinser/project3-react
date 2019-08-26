@@ -12,7 +12,7 @@ class PhotoShow extends Component {
   };
 
   async componentDidMount(){
-    const photo = await fetch(`http://localhost:8000/photos/${this.props.match.params.id}`)
+    const photo = await fetch(`${process.env.REACT_APP_BACKEND_URL}/photos/${this.props.match.params.id}`)
     const parsedPhoto = await photo.json()
     console.log(this.props.currentUser)
     this.setState({
@@ -32,7 +32,7 @@ class PhotoShow extends Component {
 
   editPhoto = async (data) => {
     try {
-      const editedPhotoRequest = await fetch(`http://localhost:8000/photos/${this.props.match.params.id}/edit`, {
+      const editedPhotoRequest = await fetch(`${process.env.REACT_APP_BACKEND_URL}/photos/${this.props.match.params.id}/edit`, {
         method: "PUT",
         credentials: "include",
         body: JSON.stringify(data),
@@ -56,7 +56,7 @@ class PhotoShow extends Component {
     const { file_location } = this.state
     return(
       <div>
-        <img src={`http://localhost:8000/photo_uploads/${file_location}`} /> 
+        <img src={`${process.env.REACT_APP_BACKEND_URL}/photo_uploads/${file_location}`} /> 
         <div>
           <Form onSubmit={this.handleSubmit}>
             <Form.Input placeholder="Photo Title" type="text" name="title" value={this.state.title} onChange={this.handleChange}/>

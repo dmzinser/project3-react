@@ -29,7 +29,7 @@ class App extends Component {
 
   logIn = async (data) => {
     try {
-      const loginResponse = await fetch("http://localhost:8000/user/login", {
+      const loginResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/login`, {
         method: "POST",
         credentials: "include",
         body: data,
@@ -53,7 +53,7 @@ class App extends Component {
 
   signUp = async (data) => {
     try {
-      const signupResponse = await fetch("http://localhost:8000/user/signup", {
+      const signupResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/signup`, {
         method: "POST",
         credentials: "include",
         body: data,
@@ -75,7 +75,7 @@ class App extends Component {
 
   logoutHandler = async () => {
     try {
-      const logout = await fetch("http://localhost:8000/user/logout");
+      const logout = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/logout`);
       const parsedLogout = await logout.json();
       if(parsedLogout.status.message === "User Successfully Logged Out") {
         this.props.history.push("/")
