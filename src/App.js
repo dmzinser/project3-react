@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import './App.css';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import Login from "./Login";
 import Signup from "./Signup";
 import UserShow from "./UserShow";
 import UserEdit from "./UserEdit";
 import PhotoShow from "./PhotoShow";
 import ShowAllPhotos from "./ShowAllPhotos";
+import MenuNav from "./MenuNav";
 import { formatDiagnosticsWithColorAndContext } from "typescript";
 
 const My404 = () => {
@@ -72,6 +73,24 @@ class App extends Component {
     }
   };
 
+  logoutHandler = async () => {
+    try {
+      const logout = await fetch("http://localhost:8000/user/logout");
+      const parsedLogout = await logout.json();
+      if(parsedLogout.status.message === "User Successfully Logged Out") {
+        this.props.history.push("/")
+        this.setState({
+          isLogged: false,
+          username: "",
+          email: "",
+          image: "",
+        });
+      }
+    } catch (err) {
+      return(err)
+    }
+  };
+
   render() {
     const currentUser = {
       username: this.state.username,
@@ -82,6 +101,7 @@ class App extends Component {
     }
     return (
       <main>
+        <MenuNav signUp={this.signUp} logIn={this.logIn} logoutHandler={this.logoutHandler} currentUser={currentUser} />
         <Switch>
           <Route exact path="/" render={() => <ShowAllPhotos />} />
           <Route exact path="/login" render={(props) => <Login {...props} logIn={this.logIn} currentUser={currentUser} />} />
@@ -96,4 +116,4 @@ class App extends Component {
   };
 };
 
-export default App;
+export default withRouter(App);
