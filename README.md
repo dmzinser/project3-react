@@ -3,18 +3,18 @@
 ### Intro
 _______________________________________________________________________________________________________________________
 
-Furever Friend is a website where shelters/caretakers can login and post available adoptees for adoption and prospective adopters can browse for a new family member!
+On The Line is a photo sharing web app that allows users to upload and edit their favorite photos!
 
 
 ### Intended User Flow
 _______________________________________________________________________________________________________________________
-
+New users are prompted at the landing page to sign up and create a new account (returning users are able to login directly from the landing page as well).  After signing up or loggin in, the user is redirected to their user page which gives them the opportunity to post a photo and edit their account details.  Each new photo posted will appear on the users's page and can be clicked through to update or delete it.
 
 
 ### Initial Wireframe
 _______________________________________________________________________________________________________________________
 
-![Homepage](wireframe/homepage-wireframe.png)
+![Landing Page](wireframe/landing-page.png)
 ![HomepageLoggedIn](wireframe/homepage-loggedin-nav-wireframe.png)
 ![Login](wireframe/login-wireframe.png)
 ![Register](wireframe/registration-wireframe.png)
