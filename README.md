@@ -18,7 +18,7 @@ ________________________________________________________________________________
 ![Sign-Up](wireframe/signup.png)
 ![User-Show-After-Sign-up](wireframe/user-show-after-signup.png)
 ![Login](wireframe/log-in.png)
-![User-Show-After-Login](wireframe/log-in.png)
+![User-Show-After-Login](wireframe/user-show.png)
 ![Add-A-Photo](wireframe/add-a-photo.png)
 ![Photo-Show](wireframe/photo-show.png)
 ![Photo-Edit](wireframe/photo-edit.png)
