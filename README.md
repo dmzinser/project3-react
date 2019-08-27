@@ -15,7 +15,7 @@ New users are prompted at the landing page to sign up and create a new account (
 _______________________________________________________________________________________________________________________
 
 ![Landing Page](wireframe/landing-page.png)
-![Sign-Up](wireframe/sign-up.png)
+![Sign-Up](wireframe/signup.png)
 ![User-Show-After-Sign-up](wireframe/user-show-after-signup.png)
 ![Login](wireframe/log-in.png)
 ![User-Show-After-Login](wireframe/log-in.png)
