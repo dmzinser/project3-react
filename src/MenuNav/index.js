@@ -9,6 +9,7 @@ class MenuNav extends Component {
         {
           this.props.currentUser.isLogged
           ? <Menu>
+            <Menu.Menu position="left">
               <Menu.Item
                 name="logout"
                 // active={activeItem === "login"}
@@ -16,27 +17,30 @@ class MenuNav extends Component {
                 >
                   Logout
                 </Menu.Item>
+            </Menu.Menu>
             </Menu>
           :
           <Menu>
-            <Link to="/login">
-              <Menu.Item
-                name="login"
-                // active={activeItem === "login"}
-                onClick={this.props.logIn}
-                >
-                  Login
-              </Menu.Item>
-            </Link>
-            <Link to="/signup">
-              <Menu.Item
-                name="signUp"
-                // active={activeItem === "signUp"}
-                onClick={this.props.signUp}
-                >
-                  Sign Up
-              </Menu.Item>
-            </Link>
+            <Menu.Menu position="right">
+              <Link to="/login">
+                <Menu.Item
+                  name="login"
+                  // active={activeItem === "login"}
+                  onClick={this.props.logIn}
+                  >
+                    Login
+                </Menu.Item>
+              </Link>
+              <Link to="/signup">
+                <Menu.Item
+                  name="signUp"
+                  // active={activeItem === "signUp"}
+                  onClick={this.props.signUp}
+                  >
+                    Sign Up
+                </Menu.Item>
+              </Link>
+            </Menu.Menu>
           </Menu>
         }
       </div>
