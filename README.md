@@ -15,11 +15,14 @@ New users are prompted at the landing page to sign up and create a new account (
 _______________________________________________________________________________________________________________________
 
 ![Landing Page](wireframe/landing-page.png)
-![HomepageLoggedIn](wireframe/homepage-loggedin-nav-wireframe.png)
-![Login](wireframe/login-wireframe.png)
-![Register](wireframe/registration-wireframe.png)
-![Details](wireframe/account-details-wireframe.png)
-![Edit](wireframe/edit-account-wireframe.png)
+![Sign-Up](wireframe/sign-up.png)
+![User-Show-After-Sign-up](wireframe/user-show-after-signup.png)
+![Login](wireframe/log-in.png)
+![User-Show-After-Login](wireframe/log-in.png)
+![Add-A-Photo](wireframe/add-a-photo.png)
+![Photo-Show](wireframe/photo-show.png)
+![Photo-Edit](wireframe/photo-edit.png)
+![User-Edit](wireframe/user-edit.png)
 
 ### Technologies Used
 _______________________________________________________________________________________________________________________
