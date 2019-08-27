@@ -1,9 +1,9 @@
-# On The Line
+# Exchange-O-Gram
 
 ### Intro
 _______________________________________________________________________________________________________________________
 
-On The Line is a photo sharing web app that allows users to upload and edit their favorite photos!
+Exchange-O-Gram is a photo sharing web app that allows users to upload and edit their favorite photos!
 
 
 ### Intended User Flow
@@ -47,12 +47,14 @@ ________________________________________________________________________________
 
 ### Visit the site!
 _______________________________________________________________________________________________________________________
-[Screenshot] <img src="https://i.imgur.com/HgQQTjW.png">
+[Screenshot] <img src="https://i.imgur.com/RzjDE7f.png">
 
 Visit the project page <a href="https://fierce-brook-99190-react.herokuapp.com/">HERE</a>
 
 ### Next Steps
 _______________________________________________________________________________________________________________________
 
-* Implement saved dog list for potential adopters
-* Implement search function
+* Show All Users Page
+* Show All Users' Pics Page
+* Home Button
+* Position Right Nav Bar
