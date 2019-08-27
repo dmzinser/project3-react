@@ -53,7 +53,7 @@ class UserShow extends Component {
       this.setState({
         user: {deleteUserResponse}
       })
-      this.props.history.push("/signup")
+      this.props.history.push("/")
     } catch (err) {
       return(err)
     }
