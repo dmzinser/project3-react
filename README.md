@@ -13,15 +13,23 @@ New users are prompted at the landing page to sign up and create a new account (
 
 ### Initial Wireframe
 _______________________________________________________________________________________________________________________
-
+### Landing Page
 ![Landing Page](wireframe/landing-page.png)
+### Sign-Up
 ![Sign-Up](wireframe/signup.png)
+### User-Show After Sign-up
 ![User-Show-After-Sign-up](wireframe/user-show-after-signup.png)
+### Login
 ![Login](wireframe/log-in.png)
+### User-Show After Login
 ![User-Show-After-Login](wireframe/user-show.png)
+### Add A Photo
 ![Add-A-Photo](wireframe/add-a-photo.png)
+### Photo Show
 ![Photo-Show](wireframe/photo-show.png)
+### Photo Edit
 ![Photo-Edit](wireframe/photo-edit.png)
+### User Edit
 ![User-Edit](wireframe/user-edit.png)
 
 ### Technologies Used
