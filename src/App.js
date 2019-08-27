@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import './App.css';
 import { Route, Switch, withRouter } from "react-router-dom";
+import { Button, Form, Grid, Header, Image, Message, Segment } from "semantic-ui-react";
 import Login from "./Login";
 import Signup from "./Signup";
 import UserShow from "./UserShow";
 import UserEdit from "./UserEdit";
 import PhotoShow from "./PhotoShow";
-import ShowAllPhotos from "./ShowAllPhotos";
+import LandingPage from "./LandingPage";
 import MenuNav from "./MenuNav";
-import { formatDiagnosticsWithColorAndContext } from "typescript";
 
 console.log(process.env)
 
@@ -26,7 +26,7 @@ class App extends Component {
     email: "",
     image: "",
     loading: true,
-    isLogged: false,
+    isLogged: false
   };
 
   logIn = async (data) => {
@@ -105,7 +105,7 @@ class App extends Component {
       <main>
         <MenuNav signUp={this.signUp} logIn={this.logIn} logoutHandler={this.logoutHandler} currentUser={currentUser} />
         <Switch>
-          <Route exact path="/" render={() => <ShowAllPhotos />} />
+          <Route exact path="/" render={() => <LandingPage />} />
           <Route exact path="/login" render={(props) => <Login {...props} logIn={this.logIn} currentUser={currentUser} />} />
           <Route exact path="/signup" render={(props) => <Signup {...props} signUp={this.signUp} /> } />
           <Route exact path="/user/:id" render={(props) => <UserShow {...props} state={this.state} currentUser={currentUser} /> } />

@@ -13,7 +13,7 @@ class UserShow extends Component {
     images: []
   };
 
-  async componentDidMount(){
+  async componentDidMount() {
     const user = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/${this.props.match.params.id}`)
     const parsedUser = await user.json()
     delete parsedUser.data.password
@@ -68,7 +68,7 @@ class UserShow extends Component {
     data.append("latitude", this.state.latitude)
     data.append("longitude", this.state.longitude)
     data.append("file_location", this.state.file);
-    const photoUpload = await fetch(`${process.env.REACT_APP_BACKEND_URL}/photos/addphoto`, {
+    const photoUpload = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/${this.props.match.params.id}/photos`, {
       method: "POST",
       credentials: "include",
       body: data,
@@ -131,24 +131,31 @@ class UserShow extends Component {
             })}
           </Grid.Row>
         </Grid>
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Input placeholder="Photo Title" type="text" name="title" onChange={this.handleChange}/>
-        <Form.Input placeholder="Photo Description" type="text" name="description" onChange={this.handleChange}/>
-        <Form.Input placeholder="Latitude" type="text" name="latitude" onChange={this.handleChange}/>
-        <Form.Input placeholder="Longitude" type="text" name="longitude" onChange={this.handleChange}/>
-        <Form.Input fluid icon='file image' iconPosition='left' type="file" name='file' onChange={this.handleChange}/>
-        <Button disabled={!this.state.file} fluid size="large" type="submit">
-          Add A Photo!
-        </Button>
-      </Form>
-      <Link to={`/user/${this.props.match.params.id}/edit`}>
-      <Button fluid size="large" type="submit">
-          Edit User!
-      </Button>
-      </Link>
-      <Button onClick={this.deleteUser} fluid size="large" type="submit">
-          Delete User!
-      </Button>
+        <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh', marginTop: 0,}}>
+          <Grid.Column style={{maxWidth: 450}}>
+            <Form onSubmit={this.handleSubmit}>
+              <Segment stacked>
+                <Form.Input placeholder="Photo Title" type="text" name="title" onChange={this.handleChange}/>
+                <Form.Input placeholder="Photo Description" type="text" name="description" onChange={this.handleChange}/>
+                <Form.Input placeholder="Latitude" type="text" name="latitude" onChange={this.handleChange}/>
+                <Form.Input placeholder="Longitude" type="text" name="longitude" onChange={this.handleChange}/>
+                <Form.Input fluid icon='file image' iconPosition='left' type="file" name='file' onChange={this.handleChange}/>
+                <Button disabled={!this.state.file} fluid size="large" type="submit">
+                  Add A Photo
+                </Button>
+                <Link to={`/user/${this.props.match.params.id}/edit`}>
+                <Button fluid size="large" type="submit">
+                    Edit Profile
+                </Button>
+                </Link>
+                <Button onClick={this.deleteUser} fluid size="large" type="submit">
+                    Delete Profile
+                </Button>
+              </Segment>
+            </Form>
+          </Grid.Column>
+        </Grid>   
+      
       </div>
     )
   }

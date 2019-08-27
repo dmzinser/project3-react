@@ -33,16 +33,24 @@ class Login extends Component {
   
   render() {
     return(
-      <Form onSubmit={this.handleSubmit}>
-        Username:
-        <Form.Input fluid icon="user" iconPosition="left" placeholder="username" type="text" name="username" onChange={this.handleChange}/>
-        Password:
-        <Form.Input fluid icon="lock" iconPosition="left" type="password" name="password" onChange={this.handleChange}/>
-        <Button fluid size="large" type="submit">Login</Button>
-        <Message>
-          Not A Member? <Link to="/signup">Sign Up!</Link>
-        </Message>
-      </Form>
+      <div className="container-background landing-background">
+        <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh', marginTop: 0,}}>
+          <Grid.Column style={{maxWidth: 450}}>
+            <Form onSubmit={this.handleSubmit}>
+                <Segment stacked>
+                  Username:
+                  <Form.Input fluid icon="user" iconPosition="left" placeholder="username" type="text" name="username" onChange={this.handleChange}/>
+                  Password:
+                  <Form.Input fluid icon="lock" iconPosition="left" type="password" name="password" onChange={this.handleChange}/>
+                  <Button fluid size="large" type="submit">Login</Button>
+                  <Message>
+                    Not A Member? <Link to="/signup">Sign Up!</Link>
+                  </Message>
+              </Segment>
+            </Form>
+          </Grid.Column>
+        </Grid>
+      </div>
     )
   }
 }

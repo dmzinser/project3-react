@@ -41,22 +41,30 @@ class Signup extends Component {
   };
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
-        Username:
-        <Form.Input fluid icon="user" iconPosition="left" placeholder="username" type="text" name="username" onChange={this.handleChange}/>
-        Email:
-        <Form.Input fluid icon="mail" iconPosition="left" placeholder="email" type="text" name="email" onChange={this.handleChange}/>
-        Password:
-        <Form.Input fluid icon="lock" iconPosition="left" type="password" name="password" onChange={this.handleChange}/>
-        Image:
-        <Form.Input fluid icon="lock" iconPosition="left" type="file" name="image" onChange={this.handleChange}/>
-        <Button fluid size="large" type="submit">
-          Register
-        </Button>
-        <Message>
-          Already a member? <Link to="/login">Login</Link>
-        </Message>
-      </Form>
+       <div className="container-background landing-background">
+       <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh', marginTop: 0,}}>
+         <Grid.Column style={{maxWidth: 450}}>
+           <Form onSubmit={this.handleSubmit}>
+               <Segment stacked>
+                Username:
+                <Form.Input fluid icon="user" iconPosition="left" placeholder="username" type="text" name="username" onChange={this.handleChange}/>
+                Email:
+                <Form.Input fluid icon="mail" iconPosition="left" placeholder="email" type="text" name="email" onChange={this.handleChange}/>
+                Password:
+                <Form.Input fluid icon="lock" iconPosition="left" type="password" name="password" onChange={this.handleChange}/>
+                Image:
+                <Form.Input fluid icon="lock" iconPosition="left" type="file" name="image" onChange={this.handleChange}/>
+                <Button fluid size="large" type="submit">
+                  Register
+                </Button>
+                <Message>
+                  Already a member? <Link to="/login">Login</Link>
+                </Message>
+             </Segment>
+           </Form>
+         </Grid.Column>
+       </Grid>
+     </div>
     )
   }
 }

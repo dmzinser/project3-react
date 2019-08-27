@@ -29,7 +29,7 @@ class MenuNav extends Component {
               </Menu.Item>
             </Link>
             <Link to="/signup">
-              <Menu.Item 
+              <Menu.Item
                 name="signUp"
                 // active={activeItem === "signUp"}
                 onClick={this.props.signUp}

@@ -31,3 +31,24 @@
     transform: rotate(360deg);
   }
 }
+
+.container-background {
+  background-size: cover;
+  height: 100vh;
+  background-repeat: none;
+  background-position: 0px -190px;
+}
+
+.landing-background {
+  background-image: url('https://www.dropbox.com/s/irgvr56l50zax75/IMG_0176.jpg?raw=1');
+}
+
+h1 {
+  color: white;
+  font-size: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
